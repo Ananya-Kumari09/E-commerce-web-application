@@ -26,7 +26,7 @@ const EditProduct = () => {
     try {
 
       const res = await axios.get(
-        `http://localhost:5000/api/products/${id}`
+        `https://e-commerce-web-application-guzr.onrender.com/api/cart/remove/${id}`
       );
 
       setForm(res.data);
@@ -57,7 +57,7 @@ const EditProduct = () => {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/products/${id}`,
+        `https://e-commerce-web-application-guzr.onrender.com/api/cart/remove/${id}`,
         {
           ...form,
           price: Number(form.price),

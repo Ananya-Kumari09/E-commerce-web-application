@@ -20,16 +20,13 @@ const ManageOrders = () => {
 
 
       const res = await axios.get(
-
-        "http://localhost:5000/api/orders/all-orders",
-
-        {
-          headers:{
-            Authorization:`Bearer ${token}`,
-          },
-        }
-
-      );
+  "https://e-commerce-web-application-guzr.onrender.com/api/orders/all-orders",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
 
       setOrders(res.data.orders || []);
@@ -69,20 +66,16 @@ const ManageOrders = () => {
 
 
       await axios.put(
-
-        `http://localhost:5000/api/orders/update/${id}`,
-
-        {
-          status,
-        },
-
-        {
-          headers:{
-            Authorization:`Bearer ${token}`,
-          },
-        }
-
-      );
+  `https://e-commerce-web-application-guzr.onrender.com/api/orders/update/${id}`,
+  {
+    status,
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
 
       alert("Order Status Updated ✅");

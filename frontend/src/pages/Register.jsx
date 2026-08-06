@@ -28,7 +28,7 @@ if (password !== confirmPassword) {
 try {
 
 const response = await axios.post(
-"http://localhost:5000/api/auth/register",
+"https://e-commerce-web-application-guzr.onrender.com/api/auth/register",
 {
 name,
 email,

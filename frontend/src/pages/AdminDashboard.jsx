@@ -1,6 +1,55 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AdminDashboard = () => {
+
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [totalOrders, setTotalOrders] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const fetchDashboardData = async () => {
+    try {
+
+      const token = localStorage.getItem("token");
+
+      const productsRes = await axios.get(
+        "https://e-commerce-web-application-guzr.onrender.com/api/products"
+      );
+
+      setTotalProducts(productsRes.data.length);
+
+      const usersRes = await axios.get(
+        "https://e-commerce-web-application-guzr.onrender.com/api/auth/users",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setTotalUsers(usersRes.data.length);
+
+      const ordersRes = await axios.get(
+        "https://e-commerce-web-application-guzr.onrender.com/api/orders/all-orders",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setTotalOrders(ordersRes.data.orders.length);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="admin-dashboard-page">
 
@@ -22,7 +71,7 @@ const AdminDashboard = () => {
 
           <h3>Total Products</h3>
 
-          <h2>20</h2>
+          <h2>{totalProducts}</h2>
 
           <p>Available Products</p>
 
@@ -32,7 +81,7 @@ const AdminDashboard = () => {
 
           <h3>Total Orders</h3>
 
-          <h2>0</h2>
+          <h2>{totalOrders}</h2>
 
           <p>Orders Received</p>
 
@@ -42,7 +91,7 @@ const AdminDashboard = () => {
 
           <h3>Total Users</h3>
 
-          <h2>0</h2>
+          <h2>{totalUsers}</h2>
 
           <p>Registered Users</p>
 
@@ -66,9 +115,12 @@ const AdminDashboard = () => {
           Manage Products
         </Link>
 
-        <Link to="/manage-orders">
-   Manage Orders
-</Link>
+        <Link
+          to="/manage-orders"
+          className="admin-dashboard-button"
+        >
+          Manage Orders
+        </Link>
 
       </div>
 

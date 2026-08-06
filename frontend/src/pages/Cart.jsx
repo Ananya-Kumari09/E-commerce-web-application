@@ -27,7 +27,7 @@ if (!token) return;
 try {
 
 const res = await axios.get(
-"http://localhost:5000/api/cart",
+"https://e-commerce-web-application-guzr.onrender.com/api/cart",
 {
 headers:{
 Authorization:`Bearer ${token}`,
@@ -92,7 +92,7 @@ try{
 
 await axios.put(
 
-"http://localhost:5000/api/cart/update",
+"https://e-commerce-web-application-guzr.onrender.com/api/cart/update",
 
 {
 productId:id,
@@ -146,7 +146,7 @@ try{
 
 await axios.delete(
 
-`http://localhost:5000/api/cart/remove/${id}`,
+`https://e-commerce-web-application-guzr.onrender.com/api/cart/remove/${id}`,
 
 {
 headers:{

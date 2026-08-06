@@ -7,6 +7,7 @@ const {
   getMyOrders,
   getAllOrders,
   updateOrderStatus,
+  getOrderCount,
 } = require("../controllers/orderController");
 
 const {

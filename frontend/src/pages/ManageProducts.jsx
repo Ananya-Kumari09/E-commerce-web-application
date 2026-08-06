@@ -15,7 +15,7 @@ const ManageProducts = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/products"
+        "https://e-commerce-web-application-guzr.onrender.com/api/products"
       );
 
       setProducts(res.data);
@@ -41,7 +41,7 @@ const ManageProducts = () => {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/products/${id}`
+        `https://e-commerce-web-application-guzr.onrender.com/api/products/${id}`
       );
 
       alert("Product Deleted");

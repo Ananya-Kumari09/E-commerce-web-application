@@ -23,7 +23,7 @@ const AddProduct = () => {
         price: Number(form.price),
       };
 
-      await axios.post("http://localhost:5000/api/products", finalData);
+      await axios.post("https://e-commerce-web-application-guzr.onrender.com/api/products", finalData);
 
       alert("Product Added 🚀");
       window.location.reload();
