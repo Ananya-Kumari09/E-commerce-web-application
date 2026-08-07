@@ -57,6 +57,7 @@ const AdminDashboard = () => {
         }
       );
 
+      
       setTotalOrders(ordersRes.data.orders.length);
 
 
