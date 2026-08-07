@@ -12,16 +12,28 @@ const AdminDashboard = () => {
     fetchDashboardData();
   }, []);
 
+
   const fetchDashboardData = async () => {
+
     try {
 
       const token = localStorage.getItem("token");
+
+      console.log("TOKEN:", token);
+
+      console.log(
+        "USER:",
+        JSON.parse(localStorage.getItem("user"))
+      );
+
 
       const productsRes = await axios.get(
         "https://e-commerce-web-application-guzr.onrender.com/api/products"
       );
 
       setTotalProducts(productsRes.data.length);
+
+
 
       const usersRes = await axios.get(
         "https://e-commerce-web-application-guzr.onrender.com/api/auth/users",
@@ -34,6 +46,8 @@ const AdminDashboard = () => {
 
       setTotalUsers(usersRes.data.length);
 
+
+
       const ordersRes = await axios.get(
         "https://e-commerce-web-application-guzr.onrender.com/api/orders/all-orders",
         {
@@ -45,13 +59,20 @@ const AdminDashboard = () => {
 
       setTotalOrders(ordersRes.data.orders.length);
 
+
+
     } catch (error) {
+
       console.log(error);
+
     }
+
   };
+
 
   return (
     <div className="admin-dashboard-page">
+
 
       <div className="admin-dashboard-header">
 
@@ -65,7 +86,10 @@ const AdminDashboard = () => {
 
       </div>
 
+
+
       <div className="admin-dashboard-grid">
+
 
         <div className="admin-dashboard-card">
 
@@ -77,6 +101,8 @@ const AdminDashboard = () => {
 
         </div>
 
+
+
         <div className="admin-dashboard-card">
 
           <h3>Total Orders</h3>
@@ -86,6 +112,8 @@ const AdminDashboard = () => {
           <p>Orders Received</p>
 
         </div>
+
+
 
         <div className="admin-dashboard-card">
 
@@ -97,9 +125,13 @@ const AdminDashboard = () => {
 
         </div>
 
+
       </div>
 
+
+
       <div className="admin-dashboard-actions">
+
 
         <Link
           to="/admin/add-product"
@@ -108,12 +140,16 @@ const AdminDashboard = () => {
           Add Product
         </Link>
 
+
+
         <Link
           to="/admin/manage-products"
           className="admin-dashboard-button"
         >
           Manage Products
         </Link>
+
+
 
         <Link
           to="/manage-orders"
@@ -122,7 +158,9 @@ const AdminDashboard = () => {
           Manage Orders
         </Link>
 
+
       </div>
+
 
     </div>
   );
