@@ -28,7 +28,7 @@ exports.registerUser = async (req, res) => {
   name,
   email,
   password,
-  role: email === "admin@gmail.com" ? "admin" : "user",
+  role: "user",
 });
 
     const token = jwt.sign(
@@ -69,6 +69,8 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
+
+    console.log("LOGIN USER ROLE:", user.role);
 
     if (!user) {
 

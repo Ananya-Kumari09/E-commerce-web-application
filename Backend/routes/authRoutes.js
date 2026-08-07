@@ -12,6 +12,8 @@ router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
-router.get("/users", getAllUsers);
+const { protect } = require("../middleware/authMiddleware");
+const { isAdmin } = require("../middleware/adminMiddleware");
 
+router.get("/users", protect, isAdmin, getAllUsers);
 module.exports = router;
